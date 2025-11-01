@@ -11,7 +11,7 @@ A modern PHP SDK for the [Hostaway API](https://api.hostaway.com/), designed to 
 - Support for GET, POST, PUT, DELETE requests  
 - Laravel compatible (can be used as a package)  
 - Easy to extend for new Hostaway API endpoints  
-- Fully tested with PHPUnit
+- Fully tested with PEST
 
 ---
 
