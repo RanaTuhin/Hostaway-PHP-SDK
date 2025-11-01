@@ -16,6 +16,7 @@ use RanaTuhin\Hostaway\Resources\{
     Tasks,
     Users
 };
+use RanaTuhin\HostawayPhpSdk\Exceptions\AuthenticationException;
 
 class HostawayClient
 {
@@ -62,8 +63,14 @@ class HostawayClient
                 'scope' => 'general',
             ]);
 
-        if (!$response->successful()) {
-            throw RequestFailedException::fromResponse($response->json());
+        if ($response->failed()) {
+            throw AuthenticationException::forInvalidCredentials();
+        }
+
+        $data = $response->json();
+
+        if (empty($data['access_token'])) {
+            throw AuthenticationException::forInvalidToken();
         }
 
         $this->accessToken = $response->json('access_token');

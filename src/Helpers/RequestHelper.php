@@ -4,6 +4,7 @@ namespace RanaTuhin\Hostaway\Helpers;
 
 use Illuminate\Support\Facades\Http;
 use RanaTuhin\Hostaway\Exceptions\RequestFailedException;
+use RanaTuhin\HostawayPhpSdk\Exceptions\AuthenticationException;
 
 class RequestHelper
 {
@@ -77,6 +78,11 @@ class RequestHelper
       */
      protected function handleResponse($response): array
      {
+          if ($response->status() === 401 || $response->status() === 403) {
+               throw AuthenticationException::forInvalidToken();
+          }
+
+          // Any other non-successful response
           if (!$response->successful()) {
                throw RequestFailedException::fromResponse($response->json());
           }
