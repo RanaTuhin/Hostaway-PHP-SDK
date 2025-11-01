@@ -90,7 +90,7 @@ $reservation = $client->reservations()->find(12345);
 
 | Resource | Methods |
 |-----------|----------|
-| `listings()` | `getAll()`, `find($id)` |
+| `listings()` | `getAll()`, `find($id)`, `update($id)`, `delete($id)`|
 | `reservations()` | `getAll()`, `find($id)`, `create($data)` |
 | `messages()` | `getAll()`, `send($data)` |
 | `channels()` | `getAll()` |
@@ -103,25 +103,7 @@ Example:
 
 ```php
 $listings = $client->listings()->getAll();
-$reservation = $client->reservations()->create([
-    'listingId' => 1234,
-    'guestEmail' => 'guest@example.com',
-    'guestName' => 'John Doe',
-    'startDate' => '2025-11-01',
-    'endDate' => '2025-11-03',
-]);
-```
-
----
-
-## 🧪 Testing (PestPHP)
-
-This SDK uses **Pest** for elegant and fast testing.
-
-Run all tests:
-
-```bash
-vendor/bin/pest
+$reservation = $client->reservations()->create([]);
 ```
 
 ---
