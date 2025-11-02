@@ -10,7 +10,7 @@ A modern PHP SDK for the [Hostaway API](https://api.hostaway.com/documentation),
 - Built-in authentication with API Key  
 - Full Laravel support (auto-discovery, facade, and config)  
 - Pest-powered testing  
-- PSR-4 compliant and publishable config  
+- PSR-4 compliant and publishable config 
 
 ---
 
